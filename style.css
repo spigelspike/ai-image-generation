@@ -1,0 +1,287 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    color: antiquewhite;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    position: relative;
+}
+
+video#backgroundVideo {
+    position: fixed;
+    top: 0;
+    left: 0;
+    min-width: 100%;
+    min-height: 100%;
+    z-index: -1;
+    filter: brightness(0.3);
+}
+
+h1 {
+    color: #a03e9b;
+    font-size: 40px;
+    text-align: center;
+    margin-bottom: 20px;
+    text-shadow: #eeecf1;
+}
+
+.container {
+    width: 90%;
+    max-width: 500px;
+
+    border-radius: 20px;
+    padding: 20px;
+    text-align: center;
+    box-sizing: border-box;
+}
+
+.curve {
+    width: 100%;
+    height: 50px;
+    
+    border-radius: 0 0 50% 50%;
+    margin-top: -25px;
+}
+
+input[type="text"] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #814f4f;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    outline: none;
+    font-size: 16px;
+    box-shadow: 0 0 10px rgba(128, 0, 128, 0.7);
+    transition: box-shadow 0.3s ease;
+    background-color: #2E073F;
+    color: white;
+    opacity: 0.8;
+}
+
+input[type="text"]:focus {
+    border-color: #9b4d97;
+    box-shadow: 0 0 20px rgba(128, 0, 128, 1);
+}
+
+.container .row {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.container select {
+    flex: 1;
+    padding: 10px;
+    border: 1px solid #814f4f;
+    border-radius: 10px;
+    outline: none;
+    font-size: 16px;
+    box-shadow: 0 0 10px rgba(128, 0, 128, 0.7);
+    transition: box-shadow 0.3s ease;
+    background-color: #2E073F;
+    color: white;
+    opacity: 0.8;
+}
+
+button {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    background: #2E073F;
+    color: white;
+    font-size: 16px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background 0.3s, box-shadow 0.3s ease;
+    box-shadow: 0 0 10px rgba(128, 0, 128, 0.7);
+}
+
+button:hover {
+    background: #8A3DFF;
+    box-shadow: 0 0 20px rgba(128, 0, 128, 1);
+}
+
+#result {
+    margin-top: 20px;
+    text-align: center;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 20px;
+    max-width: 90%;
+    margin: 0 auto;
+}
+
+#result img {
+    width: 100%;
+    max-width: 200px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    h1 {
+        font-size: 30px;
+    }
+
+    .container {
+        padding: 15px;
+    }
+
+    input[type="text"], .container select, button {
+        font-size: 14px;
+    }
+
+    .container .row {
+        flex-direction: column;
+    }
+
+    #result {
+        grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    }
+}
+
+/* Footer Styling */
+footer {
+    width: 100%;
+    color: antiquewhite;
+    text-align: center;
+    padding: 20px 0;
+}
+
+.footer-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+}
+
+.footer-logo img {
+    width: 80px;
+    height: auto;
+}
+
+.social-links {
+    display: flex;
+    gap: 20px;
+}
+
+.social-links a {
+    text-decoration: none;
+    color: antiquewhite;
+    font-size: 16px;
+    transition: color 0.3s ease;
+}
+
+.social-links a:hover {
+    color: #8A3DFF;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .social-links {
+        flex-direction
+    }
+    /* From Uiverse.io by wilsondesouza */ 
+ul {
+    list-style: none;
+  }
+  
+  .example-2 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .example-2 .icon-content {
+    margin: 0 10px;
+    position: relative;
+  }
+  .example-2 .icon-content .tooltip {
+    position: absolute;
+    top: -30px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: #fff;
+    padding: 6px 10px;
+    border-radius: 5px;
+    opacity: 0;
+    visibility: hidden;
+    font-size: 14px;
+    transition: all 0.3s ease;
+  }
+  .example-2 .icon-content:hover .tooltip {
+    opacity: 1;
+    visibility: visible;
+    top: -50px;
+  }
+  .example-2 .icon-content a {
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    color: #4d4d4d;
+    background-color: #fff;
+    transition: all 0.3s ease-in-out;
+  }
+  .example-2 .icon-content a:hover {
+    box-shadow: 3px 2px 45px 0px rgb(0 0 0 / 12%);
+  }
+  .example-2 .icon-content a svg {
+    position: relative;
+    z-index: 1;
+    width: 30px;
+    height: 30px;
+  }
+  .example-2 .icon-content a:hover {
+    color: white;
+  }
+  .example-2 .icon-content a .filled {
+    position: absolute;
+    top: auto;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 0;
+    background-color: #000;
+    transition: all 0.3s ease-in-out;
+  }
+  .example-2 .icon-content a:hover .filled {
+    height: 100%;
+  }
+  
+  .example-2 .icon-content a[data-social="linkedin"] .filled,
+  .example-2 .icon-content a[data-social="linkedin"] ~ .tooltip {
+    background-color: #0274b3;
+  }
+  
+  .example-2 .icon-content a[data-social="github"] .filled,
+  .example-2 .icon-content a[data-social="github"] ~ .tooltip {
+    background-color: #24262a;
+  }
+  .example-2 .icon-content a[data-social="instagram"] .filled,
+  .example-2 .icon-content a[data-social="instagram"] ~ .tooltip {
+    background: linear-gradient(
+      45deg,
+      #405de6,
+      #5b51db,
+      #b33ab4,
+      #c135b4,
+      #e1306c,
+      #fd1f1f
+    );
+  }
+  .example-2 .icon-content a[data-social="youtube"] .filled,
+  .example-2 .icon-content a[data-social="youtube"] ~ .tooltip {
+    background-color: #ff0000;
+  }
+  
