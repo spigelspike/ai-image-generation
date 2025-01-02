@@ -188,4 +188,14 @@ footer {
     .social-links {
         flex-direction
     }
+
+    .generated-image {
+    width: 100%;
+    max-width: 800px;
+    height: auto; /* Maintain aspect ratio */
+    margin: 20px 0;
+    border-radius: 8px; /* Optional for a rounded border */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
   
