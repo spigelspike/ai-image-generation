@@ -10,34 +10,38 @@ function generateImages() {
         resultDiv.innerHTML = '';
         spinner.style.display = 'block';
 
-        const basePrompt = `${style} style: ${prompt}`;
-        const fragment = document.createDocumentFragment();
+        const uniquePrompt = `${style} style: ${prompt}`;
+        const url = `https://image.pollinations.ai/prompt/${encodeURIComponent(uniquePrompt)}?ar=${aspectRatio}`;
 
         setTimeout(() => {
-            for (let i = 0; i < 3; i++) {
-                const uniquePrompt = `${basePrompt} ${i + 1}`;
-                const url = `https://image.pollinations.ai/prompt/${encodeURIComponent(uniquePrompt)}?ar=${aspectRatio}`;
-                const container = document.createElement('div');
+            const container = document.createElement('div');
 
-                const img = document.createElement('img');
-                img.src = url;
-                img.alt = `Generated Image ${i + 1}`;
+            const img = document.createElement('img');
+            img.src = url;
+            img.alt = 'Generated Image';
 
-                const button = document.createElement('button');
-                button.innerText = 'Download';
-                button.className = 'download-btn';
-                button.onclick = () => downloadImage(url, `image_${i + 1}.jpg`);
+            const button = document.createElement('button');
+            button.innerText = 'Download';
+            button.className = 'download-btn';
+            button.onclick = () => downloadImage(url, 'image.jpg');
 
-                container.appendChild(img);
-                container.appendChild(button);
-                fragment.appendChild(container);
-            }
+            container.appendChild(img);
+            container.appendChild(button);
+            resultDiv.appendChild(container);
 
-            resultDiv.appendChild(fragment);
-            // Hide spinner after images are loaded
+            // Hide spinner after image is loaded
             spinner.style.display = 'none';
         }, 2000); // Simulate loading time
     } else {
         alert('Please enter a prompt!');
     }
+}
+
+function downloadImage(url, filename) {
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = filename;
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
 }
