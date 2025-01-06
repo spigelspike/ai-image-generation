@@ -1,3 +1,4 @@
+/* General Body Styling */
 body {
     margin: 0;
     padding: 0;
@@ -10,8 +11,10 @@ body {
     align-items: center;
     overflow: hidden;
     position: relative;
+    background-color: #1e1e1e; /* Fallback for unsupported video */
 }
 
+/* Background Video */
 video#backgroundVideo {
     position: fixed;
     top: 0;
@@ -22,6 +25,7 @@ video#backgroundVideo {
     filter: brightness(0.3);
 }
 
+/* Headings */
 h1 {
     color: #a03e9b;
     font-size: 40px;
@@ -30,24 +34,25 @@ h1 {
     text-shadow: #eeecf1;
 }
 
+/* Main Container */
 .container {
     width: 90%;
     max-width: 500px;
-
     border-radius: 20px;
     padding: 20px;
     text-align: center;
     box-sizing: border-box;
 }
 
+/* Curve Divider */
 .curve {
     width: 100%;
     height: 50px;
-    
     border-radius: 0 0 50% 50%;
     margin-top: -25px;
 }
 
+/* Input Field Styling */
 input[type="text"] {
     width: 100%;
     padding: 10px;
@@ -68,6 +73,7 @@ input[type="text"]:focus {
     box-shadow: 0 0 20px rgba(128, 0, 128, 1);
 }
 
+/* Dropdown Styling */
 .container .row {
     display: flex;
     justify-content: space-between;
@@ -89,6 +95,7 @@ input[type="text"]:focus {
     opacity: 0.8;
 }
 
+/* Button Styling */
 button {
     width: 100%;
     padding: 10px;
@@ -107,6 +114,7 @@ button:hover {
     box-shadow: 0 0 20px rgba(128, 0, 128, 1);
 }
 
+/* Result Section */
 #result {
     margin-top: 20px;
     text-align: center;
@@ -117,34 +125,14 @@ button:hover {
     margin: 0 auto;
 }
 
-#result img {
+#result img,
+.generated-image {
     width: 100%;
-    max-width: 200px;
+    max-width: 800px; /* Increased size for larger images */
+    height: auto;
     border-radius: 10px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-}
-
-/* Responsive Design */
-@media (max-width: 768px) {
-    h1 {
-        font-size: 30px;
-    }
-
-    .container {
-        padding: 15px;
-    }
-
-    input[type="text"], .container select, button {
-        font-size: 14px;
-    }
-
-    .container .row {
-        flex-direction: column;
-    }
-
-    #result {
-        grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
-    }
+    margin: 20px 0;
 }
 
 /* Footer Styling */
@@ -185,17 +173,23 @@ footer {
 
 /* Responsive Design */
 @media (max-width: 768px) {
-    .social-links {
-        flex-direction
+    h1 {
+        font-size: 30px;
     }
 
-    .generated-image {
-    width: 100%;
-    max-width: 800px;
-    height: auto; /* Maintain aspect ratio */
-    margin: 20px 0;
-    border-radius: 8px; /* Optional for a rounded border */
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-}
+    .container {
+        padding: 15px;
+    }
 
-  
+    input[type="text"], .container select, button {
+        font-size: 14px;
+    }
+
+    .container .row {
+        flex-direction: column;
+    }
+
+    #result {
+        grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    }
+}
