@@ -171,7 +171,13 @@ footer {
     color: #8A3DFF;
 }
 
-/* Responsive Design */
+.warning {
+    text-align: center;
+    font-size: 14px;
+    margin-top: 20px;
+    font-style: italic;
+}
+
 @media (max-width: 768px) {
     h1 {
         font-size: 30px;
