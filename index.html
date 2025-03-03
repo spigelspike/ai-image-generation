@@ -9,12 +9,8 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
 </head>
 <body>
-    <div class="background-overlay"></div>
-    <video autoplay muted loop id="backgroundVideo">
-        <source src="assets/bg.mp4" type="video/mp4">
-        Your browser does not support HTML5 video.
-    </video>
-
+    <div class="gradient-background"></div>
+    
     <header>
         <div class="logo">
             <span class="logo-text">Dreamscape</span>
@@ -63,7 +59,9 @@
             <button id="generate-btn" onclick="generateImage()">
                 <span class="btn-text">Generate Image</span>
                 <span class="btn-icon"><i class="fas fa-magic"></i></span>
-                <span class="btn-loading"><i class="fas fa-spinner fa-spin"></i></span>
+                <div class="btn-loading">
+                    <div class="spinner"></div>
+                </div>
             </button>
         </div>
         
