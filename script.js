@@ -1,8 +1,5 @@
 // Global Variables
 let isGenerating = false;
-let currentPrompt = '';
-let currentStyle = '';
-let currentFormat = '';
 
 // Initialize the page
 document.addEventListener('DOMContentLoaded', function() {
@@ -50,6 +47,7 @@ function generateImage() {
     const style = document.getElementById('style').value;
     const format = document.getElementById('format').value;
     const generateBtn = document.getElementById('generate-btn');
+    const resultDiv = document.getElementById('result');
     
     if (!prompt) {
         showToast('Please enter a description for your image', 'warning');
@@ -63,12 +61,12 @@ function generateImage() {
     
     // Set generating state
     isGenerating = true;
-    currentPrompt = prompt;
-    currentStyle = style;
-    currentFormat = format;
     
-    // Update button state
+    // Update button state to show loading
     generateBtn.classList.add('loading');
+    
+    // Clear previous results
+    resultDiv.innerHTML = '';
     
     // Add aspect ratio parameter based on format
     let aspectRatio = '';
@@ -129,9 +127,6 @@ function displayResult(img, prompt, style, imageUrl) {
     const resultDiv = document.getElementById('result');
     const resultContainer = document.getElementById('result-container');
     const mainContainer = document.querySelector('.container');
-    
-    // Clear previous results
-    resultDiv.innerHTML = '';
     
     // Create image card
     const imageCard = document.createElement('div');
@@ -199,7 +194,6 @@ function displayResult(img, prompt, style, imageUrl) {
 
 // Download the generated image
 function downloadImage(url, filename) {
-    // Create link and trigger download
     const a = document.createElement('a');
     a.href = url;
     a.download = filename;
@@ -253,27 +247,12 @@ function showToast(message, type = 'info') {
     if (!toastContainer) {
         toastContainer = document.createElement('div');
         toastContainer.id = 'toast-container';
-        toastContainer.style.position = 'fixed';
-        toastContainer.style.bottom = '20px';
-        toastContainer.style.right = '20px';
-        toastContainer.style.zIndex = '1000';
         document.body.appendChild(toastContainer);
     }
     
     // Create toast element
     const toast = document.createElement('div');
     toast.className = `toast toast-${type} animate__animated animate__fadeIn`;
-    toast.style.backgroundColor = 'rgba(20, 20, 20, 0.9)';
-    toast.style.color = 'white';
-    toast.style.padding = '12px 20px';
-    toast.style.borderRadius = '8px';
-    toast.style.marginTop = '10px';
-    toast.style.boxShadow = '0 4px 12px rgba(0,0,0,0.2)';
-    toast.style.backdropFilter = 'blur(5px)';
-    toast.style.display = 'flex';
-    toast.style.alignItems = 'center';
-    toast.style.width = 'auto';
-    toast.style.maxWidth = '300px';
     
     // Set icon based on type
     let iconClass = 'info-circle';
@@ -312,4 +291,20 @@ function showToast(message, type = 'info') {
     
     // Remove after delay
     setTimeout(() => {
-        toast.classList.remove('animate__fade
+        toast.classList.remove('animate__fadeIn');
+        toast.classList.add('animate__fadeOut');
+        
+        setTimeout(() => {
+            toast.remove();
+        }, 300);
+    }, 3000);
+}
+
+// Shake element for error feedback
+function shakeElement(element) {
+    element.classList.add('animate__animated', 'animate__shakeX');
+    
+    setTimeout(() => {
+        element.classList.remove('animate__animated', 'animate__shakeX');
+    }, 1000);
+}
