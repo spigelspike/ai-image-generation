@@ -16,6 +16,9 @@
             <span class="logo-text">Dreamscape</span>
             <span class="logo-icon"><i class="fas fa-paint-brush"></i></span>
         </div>
+        <button id="history-toggle" class="action-btn">
+            <i class="fas fa-history"></i>
+        </button>
     </header>
 
     <main>
@@ -42,6 +45,10 @@
                         <option value="cyberpunk">Cyberpunk</option>
                         <option value="watercolor">Watercolor</option>
                         <option value="vintage">Vintage</option>
+                        <option value="logo">Logo</option>
+                        <option value="digital art">Digital Art</option>
+                        <option value="oil painting">Oil Painting</option>
+                        <option value="3d render">3D Render</option>
                     </select>
                 </div>
                 
@@ -54,6 +61,38 @@
                         <option value="widescreen">Widescreen</option>
                     </select>
                 </div>
+                
+                <div class="additional-options">
+                    <label>
+                        Enhancement Options
+                        <div class="tooltip">
+                            <i class="fas fa-info-circle tooltip-icon"></i>
+                            <span class="tooltip-text">Add options to enhance your images</span>
+                        </div>
+                    </label>
+                    
+                    <div class="checkbox-container">
+                        <input type="checkbox" id="hd-option" name="hd-option">
+                        <label for="hd-option">HD Quality</label>
+                    </div>
+                    
+                    <div class="checkbox-container">
+                        <input type="checkbox" id="enhance-details" name="enhance-details">
+                        <label for="enhance-details">Enhanced Details</label>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="slider-container">
+                <label for="creativity-slider">
+                    Creativity Level
+                    <div class="tooltip">
+                        <i class="fas fa-info-circle tooltip-icon"></i>
+                        <span class="tooltip-text">Higher values create more creative but less predictable results</span>
+                    </div>
+                </label>
+                <input type="range" min="0" max="100" value="50" class="range-slider" id="creativity-slider">
+                <div class="slider-value" id="creativity-value">50%</div>
             </div>
             
             <button id="generate-btn" onclick="generateImage()">
@@ -63,6 +102,24 @@
                     <div class="spinner"></div>
                 </div>
             </button>
+            
+            <div class="gallery-preview">
+                <p>Example styles:</p>
+                <div class="gallery-grid">
+                    <div class="gallery-item" data-style="cinematic" data-prompt="mountain landscape">
+                        <img src="/api/placeholder/150/150" alt="Cinematic style">
+                    </div>
+                    <div class="gallery-item" data-style="anime" data-prompt="character portrait">
+                        <img src="/api/placeholder/150/150" alt="Anime style">
+                    </div>
+                    <div class="gallery-item" data-style="logo" data-prompt="tech company logo">
+                        <img src="/api/placeholder/150/150" alt="Logo style">
+                    </div>
+                    <div class="gallery-item" data-style="3d render" data-prompt="futuristic city">
+                        <img src="/api/placeholder/150/150" alt="3D Render style">
+                    </div>
+                </div>
+            </div>
         </div>
         
         <div id="result-container" class="hidden">
@@ -70,8 +127,23 @@
             <button id="back-btn" onclick="hideResults()">
                 <i class="fas fa-arrow-left"></i> Create Another
             </button>
+            <button id="download-all-btn" class="action-btn">
+                <i class="fas fa-download"></i> Download All
+            </button>
         </div>
     </main>
+    
+    <div class="history-panel" id="history-panel">
+        <div class="history-header">
+            <h3>Generation History</h3>
+            <button class="close-history" id="close-history">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <div class="history-items" id="history-items">
+            <!-- History items will be inserted here by JavaScript -->
+        </div>
+    </div>
     
     <footer>
         <div class="footer-container">
@@ -83,6 +155,7 @@
                 <a href="#"><i class="fas fa-question-circle"></i> About</a>
                 <a href="#"><i class="fas fa-shield-alt"></i> Privacy</a>
                 <a href="#"><i class="fas fa-code"></i> API</a>
+                <a href="#"><i class="fas fa-palette"></i> Gallery</a>
             </div>
         </div>
     </footer>
