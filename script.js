@@ -228,7 +228,10 @@ function displayResult(img, prompt, style, format, imageUrl) {
     imageCard.className = `image-card ${format} animate__animated animate__fadeIn`;
     
     // Add image
-    imageCard.appendChild(img);
+    const imgElement = new Image();
+    imgElement.src = imageUrl;
+    imgElement.alt = prompt;
+    imageCard.appendChild(imgElement);
     
     // Add overlay with info and actions
     const overlay = document.createElement('div');
