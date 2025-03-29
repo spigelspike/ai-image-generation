@@ -11,9 +11,6 @@ document.addEventListener('DOMContentLoaded', function() {
     // Set up event listeners
     setupEventListeners();
     
-    // Initialize slider values
-    initializeSliders();
-    
     // Load history from local storage
     loadHistory();
     
@@ -60,23 +57,6 @@ function setupEventListeners() {
     document.getElementById('close-history').addEventListener('click', function() {
         document.getElementById('history-panel').classList.remove('open');
     });
-    
-    // Download all button
-    document.getElementById('download-all-btn').addEventListener('click', function() {
-        downloadAllImages();
-    });
-    
-    // Creativity slider
-    document.getElementById('creativity-slider').addEventListener('input', function() {
-        document.getElementById('creativity-value').textContent = `${this.value}%`;
-    });
-}
-
-// Initialize sliders
-function initializeSliders() {
-    const creativitySlider = document.getElementById('creativity-slider');
-    const creativityValue = document.getElementById('creativity-value');
-    creativityValue.textContent = `${creativitySlider.value}%`;
 }
 
 // Setup gallery preview items
@@ -116,9 +96,6 @@ function generateImage() {
     const format = document.getElementById('format').value;
     const generateBtn = document.getElementById('generate-btn');
     const resultDiv = document.getElementById('result');
-    const hdOption = document.getElementById('hd-option').checked;
-    const enhanceDetails = document.getElementById('enhance-details').checked;
-    const creativityLevel = document.getElementById('creativity-slider').value;
     
     if (!prompt) {
         showToast('Please enter a description for your image', 'warning');
@@ -155,25 +132,10 @@ function generateImage() {
             aspectRatio = '/ar=1:1'; // Square
     }
     
-    // Add enhancement parameters
-    let enhancementParams = '';
-    if (hdOption) {
-        enhancementParams += '/q=2'; // Higher quality
-    }
-    if (enhanceDetails) {
-        enhancementParams += '/ds=3'; // Enhanced details
-    }
-    
-    // Add creativity parameter (maps to Pollinations "cfg" parameter)
-    // Lower creativity value (0) means higher cfg value (20)
-    // Higher creativity value (100) means lower cfg value (5)
-    const cfgValue = 20 - ((creativityLevel / 100) * 15);
-    const creativityParam = `/cfg=${cfgValue.toFixed(1)}`;
-    
     // Create the URL with parameters
     const formattedPrompt = `${style} style: ${prompt}`;
     const baseUrl = `https://image.pollinations.ai/prompt/${encodeURIComponent(formattedPrompt)}`;
-    const imageUrl = baseUrl + aspectRatio + enhancementParams + creativityParam;
+    const imageUrl = baseUrl + aspectRatio;
     
     // Create image element
     const img = new Image();
@@ -317,24 +279,6 @@ function downloadImage(url, filename) {
     a.click();
     
     showToast('Image downloading...', 'success');
-}
-
-// Download all images in the result
-function downloadAllImages() {
-    const images = document.querySelectorAll('#result img');
-    
-    if (images.length === 0) {
-        showToast('No images to download', 'warning');
-        return;
-    }
-    
-    images.forEach((img, index) => {
-        setTimeout(() => {
-            downloadImage(img.src, `dreamscape-image-${index+1}.jpg`);
-        }, index * 500); // Stagger downloads to avoid browser limitations
-    });
-    
-    showToast(`Downloading ${images.length} images...`, 'success');
 }
 
 // Share the generated image
