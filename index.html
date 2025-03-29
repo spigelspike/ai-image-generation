@@ -12,7 +12,10 @@
     <div class="gradient-background"></div>
     
     <header>
-        <!-- History toggle button moved to bottom left in CSS -->
+        <div class="logo">
+            <span class="logo-text">Dreamscape</span>
+            <i class="fas fa-magic logo-icon"></i>
+        </div>
     </header>
 
     <main>
@@ -39,7 +42,6 @@
                         <option value="cyberpunk">Cyberpunk</option>
                         <option value="watercolor">Watercolor</option>
                         <option value="vintage">Vintage</option>
-                        <option value="logo">Logo</option>
                         <option value="digital art">Digital Art</option>
                         <option value="oil painting">Oil Painting</option>
                         <option value="3d render">3D Render</option>
@@ -55,38 +57,6 @@
                         <option value="widescreen">Widescreen</option>
                     </select>
                 </div>
-                
-                <div class="additional-options">
-                    <label>
-                        Enhancement Options
-                        <div class="tooltip">
-                            <i class="fas fa-info-circle tooltip-icon"></i>
-                            <span class="tooltip-text">Add options to enhance your images</span>
-                        </div>
-                    </label>
-                    
-                    <div class="checkbox-container">
-                        <input type="checkbox" id="hd-option" name="hd-option">
-                        <label for="hd-option">HD Quality</label>
-                    </div>
-                    
-                    <div class="checkbox-container">
-                        <input type="checkbox" id="enhance-details" name="enhance-details">
-                        <label for="enhance-details">Enhanced Details</label>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="slider-container">
-                <label for="creativity-slider">
-                    Creativity Level
-                    <div class="tooltip">
-                        <i class="fas fa-info-circle tooltip-icon"></i>
-                        <span class="tooltip-text">Higher values create more creative but less predictable results</span>
-                    </div>
-                </label>
-                <input type="range" min="0" max="100" value="50" class="range-slider" id="creativity-slider">
-                <div class="slider-value" id="creativity-value">50%</div>
             </div>
             
             <button id="generate-btn" onclick="generateImage()">
@@ -96,15 +66,34 @@
                     <div class="spinner"></div>
                 </div>
             </button>
+
+            <div class="gallery-preview">
+                <h3>Try these prompts:</h3>
+                <div class="gallery-grid">
+                    <div class="gallery-item" data-prompt="A futuristic city at night" data-style="cyberpunk">
+                        <img src="https://image.pollinations.ai/prompt/A%20futuristic%20city%20at%20night%20cyberpunk%20style" alt="Cyberpunk city">
+                        <div class="gallery-overlay">Cyberpunk City</div>
+                    </div>
+                    <div class="gallery-item" data-prompt="Majestic dragon flying over mountains" data-style="fantasy">
+                        <img src="https://image.pollinations.ai/prompt/Majestic%20dragon%20flying%20over%20mountains%20fantasy%20style" alt="Fantasy dragon">
+                        <div class="gallery-overlay">Fantasy Dragon</div>
+                    </div>
+                    <div class="gallery-item" data-prompt="Portrait of a cybernetic samurai" data-style="cinematic">
+                        <img src="https://image.pollinations.ai/prompt/Portrait%20of%20a%20cybernetic%20samurai%20cinematic%20style" alt="Cybernetic samurai">
+                        <div class="gallery-overlay">Cybernetic Samurai</div>
+                    </div>
+                    <div class="gallery-item" data-prompt="Surreal landscape with floating islands" data-style="abstract">
+                        <img src="https://image.pollinations.ai/prompt/Surreal%20landscape%20with%20floating%20islands%20abstract%20style" alt="Surreal landscape">
+                        <div class="gallery-overlay">Surreal Landscape</div>
+                    </div>
+                </div>
+            </div>
         </div>
         
         <div id="result-container" class="hidden">
             <div id="result"></div>
             <button id="back-btn" onclick="hideResults()">
                 <i class="fas fa-arrow-left"></i> Create Another
-            </button>
-            <button id="download-all-btn" class="action-btn">
-                <i class="fas fa-download"></i> Download All
             </button>
         </div>
     </main>
