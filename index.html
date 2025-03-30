@@ -27,6 +27,9 @@
                 <div class="input-wrapper">
                     <i class="fas fa-lightbulb input-icon"></i>
                     <input type="text" id="prompt" placeholder="Describe your imagination...">
+                    <button id="random-prompt" class="random-btn" title="Get random prompt">
+                        <i class="fas fa-random"></i>
+                    </button>
                 </div>
             </div>
             
@@ -97,23 +100,21 @@
         </div>
     </main>
     
-    <div class="history-tab" id="history-tab">
-        <div class="tab-handle">
-            <i class="fas fa-history"></i>
-            <span>History</span>
+    <div class="history-panel" id="history-panel">
+        <div class="history-header">
+            <h3>Generation History</h3>
+            <button class="close-history" id="close-history">
+                <i class="fas fa-times"></i>
+            </button>
         </div>
-        <div class="history-panel" id="history-panel">
-            <div class="history-header">
-                <h3>Generation History</h3>
-                <button class="close-history" id="close-history">
-                    <i class="fas fa-times"></i>
-                </button>
-            </div>
-            <div class="history-items" id="history-items">
-                <!-- History items will be inserted here by JavaScript -->
-            </div>
+        <div class="history-items" id="history-items">
+            <!-- History items will be inserted here by JavaScript -->
         </div>
     </div>
+    
+    <button id="history-toggle" class="action-btn">
+        <i class="fas fa-history"></i>
+    </button>
     
     <footer>
         <div class="footer-container">
