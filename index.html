@@ -34,6 +34,7 @@
                 <div class="style-select">
                     <label for="style">Art Style</label>
                     <select id="style">
+                        <option value="none">No Style</option>
                         <option value="cinematic">Cinematic</option>
                         <option value="anime">Anime</option>
                         <option value="realistic">Realistic</option>
@@ -58,6 +59,26 @@
                     </select>
                 </div>
             </div>
+
+            <div class="advanced-options">
+                <div class="option-toggle">
+                    <input type="checkbox" id="enhance-prompt">
+                    <label for="enhance-prompt">Enhance Prompt</label>
+                    <div class="tooltip">
+                        <i class="fas fa-info-circle tooltip-icon"></i>
+                        <span class="tooltip-text">AI will improve your prompt for better results</span>
+                    </div>
+                </div>
+                
+                <div class="option-toggle">
+                    <input type="checkbox" id="nsfw-toggle">
+                    <label for="nsfw-toggle">NSFW Content</label>
+                    <div class="tooltip">
+                        <i class="fas fa-info-circle tooltip-icon"></i>
+                        <span class="tooltip-text">Allow mature content (age verification required)</span>
+                    </div>
+                </div>
+            </div>
             
             <button id="generate-btn" onclick="generateImage()">
                 <span class="btn-text">Generate Image</span>
@@ -66,28 +87,6 @@
                     <div class="spinner"></div>
                 </div>
             </button>
-
-            <div class="gallery-preview">
-                <h3>Try these prompts:</h3>
-                <div class="gallery-grid">
-                    <div class="gallery-item" data-prompt="A futuristic city at night" data-style="cyberpunk">
-                        <img src="https://image.pollinations.ai/prompt/A%20futuristic%20city%20at%20night%20cyberpunk%20style" alt="Cyberpunk city">
-                        <div class="gallery-overlay">Cyberpunk City</div>
-                    </div>
-                    <div class="gallery-item" data-prompt="Majestic dragon flying over mountains" data-style="fantasy">
-                        <img src="https://image.pollinations.ai/prompt/Majestic%20dragon%20flying%20over%20mountains%20fantasy%20style" alt="Fantasy dragon">
-                        <div class="gallery-overlay">Fantasy Dragon</div>
-                    </div>
-                    <div class="gallery-item" data-prompt="Portrait of a cybernetic samurai" data-style="cinematic">
-                        <img src="https://image.pollinations.ai/prompt/Portrait%20of%20a%20cybernetic%20samurai%20cinematic%20style" alt="Cybernetic samurai">
-                        <div class="gallery-overlay">Cybernetic Samurai</div>
-                    </div>
-                    <div class="gallery-item" data-prompt="Surreal landscape with floating islands" data-style="abstract">
-                        <img src="https://image.pollinations.ai/prompt/Surreal%20landscape%20with%20floating%20islands%20abstract%20style" alt="Surreal landscape">
-                        <div class="gallery-overlay">Surreal Landscape</div>
-                    </div>
-                </div>
-            </div>
         </div>
         
         <div id="result-container" class="hidden">
@@ -98,21 +97,23 @@
         </div>
     </main>
     
-    <div class="history-panel" id="history-panel">
-        <div class="history-header">
-            <h3>Generation History</h3>
-            <button class="close-history" id="close-history">
-                <i class="fas fa-times"></i>
-            </button>
+    <div class="history-tab" id="history-tab">
+        <div class="tab-handle">
+            <i class="fas fa-history"></i>
+            <span>History</span>
         </div>
-        <div class="history-items" id="history-items">
-            <!-- History items will be inserted here by JavaScript -->
+        <div class="history-panel" id="history-panel">
+            <div class="history-header">
+                <h3>Generation History</h3>
+                <button class="close-history" id="close-history">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="history-items" id="history-items">
+                <!-- History items will be inserted here by JavaScript -->
+            </div>
         </div>
     </div>
-    
-    <button id="history-toggle" class="action-btn">
-        <i class="fas fa-history"></i>
-    </button>
     
     <footer>
         <div class="footer-container">
@@ -128,6 +129,17 @@
             </div>
         </div>
     </footer>
+
+    <div id="age-verification-modal" class="modal hidden">
+        <div class="modal-content">
+            <h3>Age Verification</h3>
+            <p>You must be 18+ to generate NSFW content. By proceeding, you confirm you are of legal age.</p>
+            <div class="modal-buttons">
+                <button id="confirm-age">I'm 18+</button>
+                <button id="cancel-age">Cancel</button>
+            </div>
+        </div>
+    </div>
 
     <script src="script.js"></script>
 </body>
